@@ -24,10 +24,18 @@ class App extends Component {
       "avatarURL": "http://localhost:5001/tyler.jpg"
     }]
   }
+
+  removeContact = (contact) => {
+    //set State baxsed on current state. set State takes in a function as argument
+    this.setState((state)=>({
+      contacts: state.contacts.filter((c)=> c.id !==contact.id)
+    }))
+
+  }
   render() {
     return (
       <div>
-        <ListContacts contacts = {this.state.contacts}/>
+        <ListContacts onDeleteContact = {this.removeContact} contacts = {this.state.contacts}/>
       </div>
     );
   }
